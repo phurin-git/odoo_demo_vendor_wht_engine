@@ -1,0 +1,16 @@
+<odoo>
+
+    <!-- Accounting Officer -->
+    <record id="group_vendor_wht_officer" model="res.groups">
+        <field name="name">Vendor WHT Officer</field>
+        <field name="category_id" ref="base.module_category_accounting"/>
+    </record>
+
+    <!-- Accounting Manager (extend existing) -->
+    <record id="group_vendor_wht_manager" model="res.groups">
+        <field name="name">Vendor WHT Manager</field>
+        <field name="category_id" ref="base.module_category_accounting"/>
+        <field name="implied_ids" eval="[(4, ref('account.group_account_manager'))]"/>
+    </record>
+
+</odoo>

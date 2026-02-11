@@ -1,0 +1,25 @@
+<odoo>
+    <report
+        id="action_report_vendor_wht"
+        model="account.move"
+        string="Vendor WHT Report"
+        report_type="qweb-pdf"
+        name="demo_vendor_engine.report_vendor_wht_template"
+        file="demo_vendor_engine.report_vendor_wht_template"
+    />
+
+    <template id="report_vendor_wht_template">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h2>Vendor Bill WHT Summary</h2>
+                <p><strong>Vendor:</strong> <t t-esc="doc.partner_id.name"/></p>
+                <p><strong>Total:</strong> <t t-esc="doc.amount_total"/></p>
+                <p><strong>WHT %:</strong> <t t-esc="doc.x_wht_rate"/>%</p>
+                <p><strong>WHT Amount:</strong> <t t-esc="doc.x_wht_amount"/></p>
+                <p><strong>Net Payment:</strong>
+                    <t t-esc="doc.amount_total - doc.x_wht_amount"/>
+                </p>
+            </div>
+        </t>
+    </template>
+</odoo>

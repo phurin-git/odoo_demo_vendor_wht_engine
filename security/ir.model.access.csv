@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_move_wht_officer,account.move.wht.officer,account.model_account_move,demo_vendor_engine.group_vendor_wht_officer,1,1,1,0
+access_account_move_wht_manager,account.move.wht.manager,account.model_account_move,demo_vendor_engine.group_vendor_wht_manager,1,1,1,1
