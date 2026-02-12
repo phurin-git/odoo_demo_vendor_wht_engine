@@ -35,7 +35,7 @@ class AccountMove(models.Model):
                 rec.x_approval_state = "approved"
 
     def action_approve(self):
-        if not self.env.user.has_group('demo_vendor_engine.group_vendor_wht_manager'):
+        if not self.env.user.has_group('demo_vendor_wht_engine.group_vendor_wht_manager'):
             raise UserError(_("Only WHT Manager can approve."))
         self.x_approval_state = "approved"
 

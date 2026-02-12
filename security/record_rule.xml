@@ -3,7 +3,7 @@
     <record id="rule_wht_officer_limit" model="ir.rule">
         <field name="name">Vendor WHT Officer Limited Access</field>
         <field name="model_id" ref="account.model_account_move"/>
-        <field name="groups" eval="[(4, ref('demo_vendor_engine.group_vendor_wht_officer'))]"/>
+        <field name="groups" eval="[(4, ref('demo_vendor_wht_engine.group_vendor_wht_officer'))]"/>
         <field name="domain_force">
             ['|', ('x_approval_state', '=', 'draft'),
                   ('x_approval_state', '=', 'waiting')]

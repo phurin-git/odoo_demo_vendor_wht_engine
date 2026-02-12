@@ -4,8 +4,8 @@
         model="account.move"
         string="Vendor WHT Report"
         report_type="qweb-pdf"
-        name="demo_vendor_engine.report_vendor_wht_template"
-        file="demo_vendor_engine.report_vendor_wht_template"
+        name="demo_vendor_wht_engine.report_vendor_wht_template"
+        file="demo_vendor_wht_engine.report_vendor_wht_template"
     />
 
     <template id="report_vendor_wht_template">
