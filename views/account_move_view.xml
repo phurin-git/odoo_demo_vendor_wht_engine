@@ -44,7 +44,7 @@
                             'invisible': [
                                 '|',
                                 ('move_type','!=','in_invoice'),
-                                ('x_is_approved','=',True)
+                                ('x_approval_state','!=','waiting')
                             ]
                         }"/>
             </xpath>
