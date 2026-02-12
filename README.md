@@ -147,6 +147,50 @@ Dependencies:
 
 ---
 
+## Demo Access
+
+The live demo environment can be accessed using the URL listed in the GitHub repository description above.
+Please use the demo credentials provided below to log in.
+
+### Available Users
+
+**1. Administrator (Full Access)**
+- Username: `admin`
+- Password: `admin`
+
+Use this account to:
+- Install modules
+- Configure settings
+- Approve high-value Vendor Bills
+- Access technical features
+
+---
+
+**2. Demo User (Standard Officer Role)**
+- Username: `demo`
+- Password: `demo`
+
+Use this account to:
+- Create Vendor Bills
+- Trigger WHT calculation
+- Submit documents for approval
+- Test API-generated records
+
+---
+
+## Suggested Demo Flow
+
+1. Login as `demo`
+2. Create a Vendor Bill above threshold
+3. Observe automatic WHT calculation
+4. Submit for approval
+5. Logout
+6. Login as `admin`
+7. Approve and post the document
+8. Print WHT report
+
+---
+
 ### Author
 
 Phurin Nararat
