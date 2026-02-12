@@ -9,17 +9,37 @@
     />
 
     <template id="report_vendor_wht_template">
-        <t t-call="web.external_layout">
-            <div class="page">
-                <h2>Vendor Bill WHT Summary</h2>
-                <p><strong>Vendor:</strong> <t t-esc="doc.partner_id.name"/></p>
-                <p><strong>Total:</strong> <t t-esc="doc.amount_total"/></p>
-                <p><strong>WHT %:</strong> <t t-esc="doc.x_wht_rate"/>%</p>
-                <p><strong>WHT Amount:</strong> <t t-esc="doc.x_wht_amount"/></p>
-                <p><strong>Net Payment:</strong>
-                    <t t-esc="doc.amount_total - doc.x_wht_amount"/>
-                </p>
-            </div>
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.external_layout">
+                <div class="page">
+
+                    <h2>Vendor Bill WHT Summary</h2>
+
+                    <p><strong>Vendor:</strong>
+                        <t t-esc="doc.partner_id.name"/>
+                    </p>
+
+                    <p><strong>Total:</strong>
+                        <t t-esc="doc.amount_total"/>
+                    </p>
+
+                    <p><strong>WHT %:</strong>
+                        <t t-esc="doc.x_wht_rate"/>%
+                    </p>
+
+                    <p><strong>WHT Amount:</strong>
+                        <t t-esc="doc.x_wht_amount"/>
+                    </p>
+
+                    <p><strong>Net Payment:</strong>
+                        <t t-esc="doc.amount_total - doc.x_wht_amount"/>
+                    </p>
+
+                </div>
+            </t>
         </t>
-    </template>
+    </t>
+</template>
+
 </odoo>
