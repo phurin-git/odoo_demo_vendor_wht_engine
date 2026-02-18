@@ -83,6 +83,6 @@
               name="Waiting Approval"
               parent="account.menu_finance"
               action="action_vendor_bill_waiting"
-              groups="demo_vendor_wht_engine.group_vendor_wht_manager"/>
+              groups="demo_vendor_engine.group_vendor_wht_manager"/>
 
 </odoo>
