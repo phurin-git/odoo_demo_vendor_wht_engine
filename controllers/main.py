@@ -16,12 +16,12 @@ class VendorBillAPI(http.Controller):
         if not vendor_name or not amount:
             return request.make_json_response({"error": "Missing vendor or amount"})
 
-        partner = request.env['res.partner'].sudo().search(
+        partner = request.env['res.partner'].with_user(request.env.user).search(
             [('name', '=', vendor_name)], limit=1
         )
 
         if not partner:
-            partner = request.env['res.partner'].sudo().create({
+            partner = request.env['res.partner'].with_user(request.env.user).create({
                 'name': vendor_name,
                 'supplier_rank': 1,
             })

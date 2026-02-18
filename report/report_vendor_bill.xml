@@ -1,45 +1,55 @@
 <odoo>
-    <report
-        id="action_report_vendor_wht"
-        model="account.move"
-        string="Vendor WHT Report"
-        report_type="qweb-pdf"
-        name="demo_vendor_wht_engine.report_vendor_wht_template"
-        file="demo_vendor_wht_engine.report_vendor_wht_template"
-    />
+
+    <record id="action_report_vendor_wht" model="ir.actions.report">
+        <field name="name">Vendor WHT Report</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">demo_vendor_wht_engine.report_vendor_wht_template</field>
+        <field name="report_file">demo_vendor_wht_engine.report_vendor_wht_template</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
 
     <template id="report_vendor_wht_template">
-    <t t-call="web.html_container">
-        <t t-foreach="docs" t-as="doc">
-            <t t-call="web.external_layout">
-                <div class="page">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
 
-                    <h2>Vendor Bill WHT Summary</h2>
+                        <h2>Vendor Bill WHT Summary</h2>
 
-                    <p><strong>Vendor:</strong>
-                        <t t-esc="doc.partner_id.name"/>
-                    </p>
+                        <p>
+                            <strong>Vendor:</strong>
+                            <t t-esc="doc.partner_id.name"/>
+                        </p>
 
-                    <p><strong>Total:</strong>
-                        <t t-esc="doc.amount_total"/>
-                    </p>
+                        <p>
+                            <strong>Total:</strong>
+                            <t t-esc="doc.amount_total"
+                               t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                        </p>
 
-                    <p><strong>WHT %:</strong>
-                        <t t-esc="doc.x_wht_rate"/>%
-                    </p>
+                        <p>
+                            <strong>WHT %:</strong>
+                            <t t-esc="doc.x_wht_rate"/>%
+                        </p>
 
-                    <p><strong>WHT Amount:</strong>
-                        <t t-esc="doc.x_wht_amount"/>
-                    </p>
+                        <p>
+                            <strong>WHT Amount:</strong>
+                            <t t-esc="doc.x_wht_amount"
+                               t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                        </p>
 
-                    <p><strong>Net Payment:</strong>
-                        <t t-esc="doc.amount_total - doc.x_wht_amount"/>
-                    </p>
+                        <p>
+                            <strong>Net Payment:</strong>
+                            <t t-esc="doc.amount_total - doc.x_wht_amount"
+                               t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                        </p>
 
-                </div>
+                    </div>
+                </t>
             </t>
         </t>
-    </t>
-</template>
+    </template>
 
 </odoo>

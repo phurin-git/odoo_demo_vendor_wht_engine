@@ -14,7 +14,7 @@ class AccountMove(models.Model):
     ], default="draft")
     x_is_approved = fields.Boolean(compute="_compute_is_approved", store=True)
 
-    @api.depends("amount_total", "x_wht_rate")
+    @api.depends("amount_total", "x_wht_rate", "move_type")
     def _compute_wht(self):
         for rec in self:
             if rec.move_type == "in_invoice":
@@ -35,7 +35,7 @@ class AccountMove(models.Model):
                 rec.x_approval_state = "approved"
 
     def action_approve(self):
-        if not self.env.user.has_group('demo_vendor_wht_engine.group_vendor_wht_manager'):
+        if not self.env.user.has_group('demo_vendor_engine.group_vendor_wht_manager'):
             raise UserError(_("Only WHT Manager can approve."))
         self.x_approval_state = "approved"
 
@@ -44,6 +44,7 @@ class AccountMove(models.Model):
             if rec.move_type == "in_invoice":
                 if rec.amount_total >= 50000 and not rec.x_is_approved:
                     raise UserError(_("Vendor Bill must be approved before posting."))
+                rec.x_approval_state = "approved"
         return super().action_post()
 
     def button_draft(self):
