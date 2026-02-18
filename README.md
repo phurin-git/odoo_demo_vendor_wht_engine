@@ -1,8 +1,8 @@
-# Vendor WHT Approval Engine (Odoo 16)
+# Vendor WHT Approval Engine (Odoo 18)
 
 ## Overview
 
-Vendor WHT Approval Engine is an Odoo 16 custom module that introduces a structured Withholding Tax (WHT) control layer for Vendor Bills.
+Vendor WHT Approval Engine is an Odoo 18 custom module that introduces a structured Withholding Tax (WHT) control layer for Vendor Bills.
 
 This module demonstrates ERP design thinking, accounting governance, and upgrade-safe customization without modifying Odoo core.
 

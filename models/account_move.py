@@ -14,7 +14,7 @@ class AccountMove(models.Model):
     ], default="draft")
     x_is_approved = fields.Boolean(compute="_compute_is_approved", store=True)
 
-    @api.depends("amount_total", "x_wht_rate")
+    @api.depends("amount_total", "x_wht_rate", "move_type")
     def _compute_wht(self):
         for rec in self:
             if rec.move_type == "in_invoice":
@@ -44,6 +44,7 @@ class AccountMove(models.Model):
             if rec.move_type == "in_invoice":
                 if rec.amount_total >= 50000 and not rec.x_is_approved:
                     raise UserError(_("Vendor Bill must be approved before posting."))
+                rec.x_approval_state = "approved"
         return super().action_post()
 
     def button_draft(self):
